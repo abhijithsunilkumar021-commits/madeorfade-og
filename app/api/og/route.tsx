@@ -138,11 +138,15 @@ const black = await fetch(
             }}
           >
             <div
-            style={{
+           style={{
+              display: "flex",
+              width: "930px",
               fontSize: 72,
               fontWeight: 900,
               color: "#0C1E41",
-              textAlign: "center",
+              lineHeight: 1.1,
+              whiteSpace: "normal",
+              flexWrap: "wrap",
             }}
           >
             {heading}

@@ -20,6 +20,14 @@ const logo =
   "https://de8afdb6bb32a20d5e48e45f0172a0a5.cdn.bubble.io/f1784040620687x486632144730352960/madeorfade%201.svg";
   const origin = new URL(request.url).origin;
 
+const apiKey = request.headers.get("x-api-key");
+
+if (apiKey !== process.env.OG_API_KEY) {
+  return new Response("Unauthorized", {
+    status: 401,
+  });
+}
+
 const regular = await fetch(
   `${origin}/fonts/ZalandoSans-Regular.ttf`
 ).then((r) => r.arrayBuffer());

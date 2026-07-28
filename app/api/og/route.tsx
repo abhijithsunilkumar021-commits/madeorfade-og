@@ -1,6 +1,6 @@
 import { ImageResponse } from "@vercel/og";
 
-export const runtime = "nodejs";
+export const runtime = "edge";
 
 export async function GET() {
   return new ImageResponse(
@@ -14,7 +14,7 @@ export async function GET() {
           alignItems: "center",
           background: "red",
           color: "white",
-          fontSize: 80,
+          fontSize: "80px",
         }}
       >
         Hello

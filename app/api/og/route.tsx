@@ -5,11 +5,8 @@ export const runtime = "edge";
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
 
-const title =
-  searchParams.get("title") ?? "Help Zack Unlock";
-
-const subtitle =
-  searchParams.get("subtitle") ?? "15% Off";
+const heading =
+  searchParams.get("heading") ?? "Help Zack Unlock • 15% Off";
 
 const description =
   searchParams.get("description") ??
@@ -141,28 +138,14 @@ const black = await fetch(
             }}
           >
             <div
-              style={{
-                fontSize: 92,
-                lineHeight: 0.98,
-                letterSpacing: "-4px",
-                fontWeight: 700,
-                color: "#3602A9",
-              }}
-            >
-              {title}
-            </div>
-
-            <div
-              style={{
-                marginTop: 8,
-                fontSize: 92,
-                lineHeight: 0.98,
-                letterSpacing: "-4px",
-                fontWeight: 700,
-                color: "#3602A9",
-              }}
-            >
-              {subtitle}
+            style={{
+              fontSize: 72,
+              fontWeight: 900,
+              color: "#0C1E41",
+              textAlign: "center",
+            }}
+          >
+            {heading}
             </div>
 
             <div

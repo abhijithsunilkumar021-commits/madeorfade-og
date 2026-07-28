@@ -5,31 +5,33 @@ import path from "node:path";
 export const runtime = "nodejs";
 
 export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url);
+  try {
+    const { searchParams } = new URL(request.url);
 
-const title =
-  searchParams.get("title") ?? "Help Zack Unlock";
+    const title =
+      searchParams.get("title") ?? "Help Zack Unlock";
 
-const subtitle =
-  searchParams.get("subtitle") ?? "15% Off";
+    const subtitle =
+      searchParams.get("subtitle") ?? "15% Off";
 
-const description =
-  searchParams.get("description") ??
-  "Vote now to help Zack earn a discount — you might unlock an offer too.";
+    const description =
+      searchParams.get("description") ??
+      "Vote now to help Zack earn a discount — you might unlock an offer too.";
 
-const logo =
-  searchParams.get("logo") ??
-  "https://de8afdb6bb32a20d5e48e45f0172a0a5.cdn.bubble.io/f1784040620687x486632144730352960/madeorfade%201.svg";
-  const regular = await readFile(
-    path.join(process.cwd(), "fonts", "ZalandoSans-Regular.ttf")
-  );
+    const logo =
+      searchParams.get("logo") ??
+      "https://de8afdb6bb32a20d5e48e45f0172a0a5.cdn.bubble.io/f1784040620687x486632144730352960/madeorfade%201.svg";
 
-  const black = await readFile(
-    path.join(process.cwd(), "fonts", "ZalandoSans-Black.ttf")
-  );
+    const regular = await readFile(
+      path.join(process.cwd(), "fonts", "ZalandoSans-Regular.ttf")
+    );
 
-  return new ImageResponse(
-    (
+    const black = await readFile(
+      path.join(process.cwd(), "fonts", "ZalandoSans-Black.ttf")
+    );
+
+    return new ImageResponse(
+      (
       <div
         style={{
           width: 1200,
@@ -202,23 +204,43 @@ const logo =
         </div>
       </div>
     ),
-    {
-      width: 1200,
-      height: 630,
-      fonts: [
+      {
+        width: 1200,
+        height: 630,
+        fonts: [
+          {
+            name: "Zalando",
+            data: regular,
+            weight: 400,
+            style: "normal",
+          },
+          {
+            name: "Zalando",
+            data: black,
+            weight: 900,
+            style: "normal",
+          },
+        ],
+      }
+    );
+  } catch (error) {
+    console.error(error);
+
+    return new Response(
+      JSON.stringify(
         {
-          name: "Zalando",
-          data: regular,
-          weight: 400,
-          style: "normal",
+          error:
+            error instanceof Error ? error.message : String(error),
         },
-        {
-          name: "Zalando",
-          data: black,
-          weight: 900,
-          style: "normal",
+        null,
+        2
+      ),
+      {
+        status: 500,
+        headers: {
+          "Content-Type": "application/json",
         },
-      ],
-    }
-  );
+      }
+    );
+  }
 }

@@ -104,8 +104,8 @@ const black = await fetch(
           >
             <img
               src={logo}
-              width={42}
-              height={42}
+              width={36}
+              height={36}
             />
 
             <div
@@ -137,7 +137,7 @@ const black = await fetch(
                 fontSize: 92,
                 lineHeight: 0.98,
                 letterSpacing: "-4px",
-                fontWeight: 900,
+                fontWeight: 700,
                 color: "#3602A9",
               }}
             >
@@ -150,7 +150,7 @@ const black = await fetch(
                 fontSize: 92,
                 lineHeight: 0.98,
                 letterSpacing: "-4px",
-                fontWeight: 900,
+                fontWeight: 700,
                 color: "#3602A9",
               }}
             >

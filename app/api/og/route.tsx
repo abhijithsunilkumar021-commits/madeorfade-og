@@ -156,7 +156,7 @@ const black = await fetch(
               style={{
                 marginTop: 40,
                 width: 690,
-                fontSize: 31,
+                fontSize: 40,
                 lineHeight: 1.4,
                 fontWeight: 400,
                 color: "#6B7382",
